@@ -38,8 +38,8 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnQuickSearch = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnAdnMenu = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
+            this.btnAdnMenu = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnManCon = new System.Windows.Forms.Button();
             this.btnContact = new System.Windows.Forms.Button();
@@ -60,15 +60,16 @@
             this.panel1.Controls.Add(this.lblWelcome);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(1, 1);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(661, 135);
+            this.panel1.Size = new System.Drawing.Size(658, 108);
             this.panel1.TabIndex = 0;
             // 
             // lblDbStatus
             // 
             this.lblDbStatus.AutoSize = true;
-            this.lblDbStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblDbStatus.Location = new System.Drawing.Point(530, 96);
+            this.lblDbStatus.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblDbStatus.Location = new System.Drawing.Point(452, 77);
             this.lblDbStatus.Name = "lblDbStatus";
             this.lblDbStatus.Size = new System.Drawing.Size(113, 28);
             this.lblDbStatus.TabIndex = 2;
@@ -77,8 +78,8 @@
             // lblConStatus
             // 
             this.lblConStatus.AutoSize = true;
-            this.lblConStatus.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblConStatus.Location = new System.Drawing.Point(522, 60);
+            this.lblConStatus.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblConStatus.Location = new System.Drawing.Point(450, 48);
             this.lblConStatus.Name = "lblConStatus";
             this.lblConStatus.Size = new System.Drawing.Size(122, 28);
             this.lblConStatus.TabIndex = 2;
@@ -87,8 +88,8 @@
             // lblWelcome
             // 
             this.lblWelcome.AutoSize = true;
-            this.lblWelcome.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lblWelcome.Location = new System.Drawing.Point(10, 96);
+            this.lblWelcome.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblWelcome.Location = new System.Drawing.Point(9, 77);
             this.lblWelcome.Name = "lblWelcome";
             this.lblWelcome.Size = new System.Drawing.Size(115, 28);
             this.lblWelcome.TabIndex = 1;
@@ -97,8 +98,8 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(10, 7);
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(9, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(270, 38);
             this.label1.TabIndex = 0;
@@ -109,121 +110,139 @@
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.btnQuickSearch);
-            this.groupBox1.Location = new System.Drawing.Point(12, 142);
+            this.groupBox1.Location = new System.Drawing.Point(11, 114);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(633, 198);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Size = new System.Drawing.Size(648, 158);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Search";
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(19, 139);
+            this.button2.Location = new System.Drawing.Point(17, 113);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(592, 36);
+            this.button2.Size = new System.Drawing.Size(611, 32);
             this.button2.TabIndex = 2;
             this.button2.Text = "Location Search";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(18, 90);
+            this.button1.Location = new System.Drawing.Point(16, 72);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(593, 33);
+            this.button1.Size = new System.Drawing.Size(612, 35);
             this.button1.TabIndex = 1;
             this.button1.Text = "Advance Search";
             this.button1.UseVisualStyleBackColor = true;
             // 
             // btnQuickSearch
             // 
-            this.btnQuickSearch.Location = new System.Drawing.Point(18, 40);
+            this.btnQuickSearch.Location = new System.Drawing.Point(16, 30);
+            this.btnQuickSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnQuickSearch.Name = "btnQuickSearch";
-            this.btnQuickSearch.Size = new System.Drawing.Size(593, 34);
+            this.btnQuickSearch.Size = new System.Drawing.Size(612, 36);
             this.btnQuickSearch.TabIndex = 0;
             this.btnQuickSearch.Text = "Quick Search";
             this.btnQuickSearch.UseVisualStyleBackColor = true;
+            this.btnQuickSearch.Click += new System.EventHandler(this.btnQuickSearch_Click);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnLogin);
             this.groupBox2.Controls.Add(this.btnAdnMenu);
-            this.groupBox2.Location = new System.Drawing.Point(12, 346);
+            this.groupBox2.Location = new System.Drawing.Point(11, 277);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(634, 173);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Size = new System.Drawing.Size(649, 138);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Database Adminstration";
             // 
-            // btnAdnMenu
-            // 
-            this.btnAdnMenu.Enabled = false;
-            this.btnAdnMenu.Location = new System.Drawing.Point(19, 40);
-            this.btnAdnMenu.Name = "btnAdnMenu";
-            this.btnAdnMenu.Size = new System.Drawing.Size(591, 43);
-            this.btnAdnMenu.TabIndex = 0;
-            this.btnAdnMenu.Text = "Manage";
-            this.btnAdnMenu.UseVisualStyleBackColor = true;
-            // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(18, 104);
+            this.btnLogin.Location = new System.Drawing.Point(16, 83);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(592, 42);
+            this.btnLogin.Size = new System.Drawing.Size(611, 34);
             this.btnLogin.TabIndex = 1;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
             // 
+            // btnAdnMenu
+            // 
+            this.btnAdnMenu.Enabled = false;
+            this.btnAdnMenu.Location = new System.Drawing.Point(17, 39);
+            this.btnAdnMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnAdnMenu.Name = "btnAdnMenu";
+            this.btnAdnMenu.Size = new System.Drawing.Size(610, 34);
+            this.btnAdnMenu.TabIndex = 0;
+            this.btnAdnMenu.Text = "Manage";
+            this.btnAdnMenu.UseVisualStyleBackColor = true;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnManCon);
-            this.groupBox3.Location = new System.Drawing.Point(12, 525);
+            this.groupBox3.Location = new System.Drawing.Point(11, 420);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(633, 106);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox3.Size = new System.Drawing.Size(648, 85);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Database Migration";
             // 
             // btnManCon
             // 
-            this.btnManCon.Location = new System.Drawing.Point(19, 41);
+            this.btnManCon.Location = new System.Drawing.Point(17, 33);
+            this.btnManCon.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnManCon.Name = "btnManCon";
-            this.btnManCon.Size = new System.Drawing.Size(592, 44);
+            this.btnManCon.Size = new System.Drawing.Size(611, 35);
             this.btnManCon.TabIndex = 0;
             this.btnManCon.Text = "Manage Connection";
             this.btnManCon.UseVisualStyleBackColor = true;
+            this.btnManCon.Click += new System.EventHandler(this.btnManCon_Click);
             // 
             // btnContact
             // 
-            this.btnContact.Location = new System.Drawing.Point(28, 660);
+            this.btnContact.Location = new System.Drawing.Point(25, 528);
+            this.btnContact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnContact.Name = "btnContact";
-            this.btnContact.Size = new System.Drawing.Size(144, 44);
+            this.btnContact.Size = new System.Drawing.Size(159, 35);
             this.btnContact.TabIndex = 5;
             this.btnContact.Text = "Contact Me";
             this.btnContact.UseVisualStyleBackColor = true;
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(234, 659);
+            this.button3.Location = new System.Drawing.Point(259, 527);
+            this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(171, 44);
+            this.button3.Size = new System.Drawing.Size(149, 35);
             this.button3.TabIndex = 6;
             this.button3.Text = "About this app";
             this.button3.UseVisualStyleBackColor = true;
             // 
             // btnMainExit
             // 
-            this.btnMainExit.Location = new System.Drawing.Point(460, 658);
+            this.btnMainExit.Location = new System.Drawing.Point(484, 526);
+            this.btnMainExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMainExit.Name = "btnMainExit";
-            this.btnMainExit.Size = new System.Drawing.Size(162, 44);
+            this.btnMainExit.Size = new System.Drawing.Size(154, 35);
             this.btnMainExit.TabIndex = 7;
             this.btnMainExit.Text = "Exit";
             this.btnMainExit.UseVisualStyleBackColor = true;
+            this.btnMainExit.Click += new System.EventHandler(this.btnMainExit_Click);
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(658, 726);
+            this.ClientSize = new System.Drawing.Size(662, 611);
             this.Controls.Add(this.btnMainExit);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnContact);
@@ -231,6 +250,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form1";
             this.Text = "GDC Database";
             this.panel1.ResumeLayout(false);
