@@ -22,12 +22,11 @@ namespace GDC_database_app
             fillCombobox();
         }
 
-        private int[] _Countarray = {0,0,0,0}; //   
+        
+        private string[] _Countarray = {"SELECT * FROM tbl_job WHERE ","","","","",""}; //[sqlstart,condition,and,condition]   
         private string _DateNow;
         private string _DateBefore;
         private string _format = "dd-MMM-yyyy";
-        private string _LongQuery = "SELECT * FROM tbl_job WHERE ";
-        private int _countCom = 0;
         private SqlConnection sqlConn;
         private SqlDataAdapter sqlDap;
         
@@ -38,6 +37,23 @@ namespace GDC_database_app
             sqlConn.Open();
         }
 
+        private void clearall()
+        {
+            int x = _Countarray.Length;
+            for (int i = 0; x > i; i++)
+            {
+                _Countarray[i] = "";
+            }
+            _Countarray[0] = "SELECT * FROM tbl_job WHERE ";
+
+
+            //textbox...
+            textBoxClient.Text = textBoxComp.Text = textBoxDescription.Text = textBoxStart.Text = textBoxJobName.Text = textBoxJobno.Text = textBoxStaff.Text = "";
+            //combobox...
+            comboBoxCategory.SelectedIndex = comboBoxDate.SelectedIndex = comboBoxPhase.SelectedIndex = comboBoxSector.SelectedIndex = comboBoxState.SelectedIndex = comboBoxSubSector.SelectedIndex = comboBoxAllTag.SelectedIndex = comboBoxCustomTag.SelectedIndex = 0;
+
+            //MessageBox.Show("All inputs are cleared");
+        }
         
         private void todaydate()
         {
@@ -48,31 +64,33 @@ namespace GDC_database_app
 
         private void fillCombobox()
         {
-            SqlCommand sqlCmdview1 = new SqlCommand("Select * from v_Categories", sqlConn);
+            
             try
             {
+                SqlCommand sqlCmdview1 = new SqlCommand("Select * from v_Categories", sqlConn);
                 SqlDataReader sqlReader1 = sqlCmdview1.ExecuteReader();
+                comboBoxCategory.Items.Insert(0, string.Empty);
                 while (sqlReader1.Read())
                 {
                     comboBoxCategory.Items.Add(sqlReader1[0].ToString());
-                }
-                comboBoxCategory.Items.Insert(0, string.Empty);
+                } 
                 sqlReader1.Close();
                 SqlCommand sqlCmdview2 = new SqlCommand("Select * FROM v_state", sqlConn);
                 SqlDataReader sqlReader2 = sqlCmdview2.ExecuteReader();
+                comboBoxState.Items.Insert(0, string.Empty);
                 while (sqlReader2.Read())
                 {
                     comboBoxState.Items.Add(sqlReader2[0].ToString());
                 }
-                comboBoxState.Items.Insert(0, string.Empty);
                 sqlReader2.Close();
                 SqlCommand sqlCmdview3 = new SqlCommand("Select * FROM v_Market_Sector", sqlConn);
                 SqlDataReader sqlReader3 = sqlCmdview3.ExecuteReader();
+                comboBoxSector.Items.Insert(0, string.Empty);
                 while (sqlReader3.Read())
                 {
                     comboBoxSector.Items.Add(sqlReader3[0].ToString());
                 }
-                comboBoxSector.Items.Insert(0, string.Empty);
+                
                 sqlReader3.Close();
                 SqlCommand sqlCmdview4 = new SqlCommand("Select * FROM v_SubSector", sqlConn);
                 SqlDataReader sqlReader4 = sqlCmdview4.ExecuteReader();
@@ -80,24 +98,45 @@ namespace GDC_database_app
                 {
                     comboBoxSubSector.Items.Add(sqlReader4[0].ToString());
                 }
-                comboBoxSector.Items.Insert(0, string.Empty);
+                comboBoxSubSector.Items.Insert(0, string.Empty);
                 sqlReader4.Close();
                 SqlCommand sqlCmdview5 = new SqlCommand("Select * FROM v_JobPhases", sqlConn);
                 SqlDataReader sqlReader5 = sqlCmdview5.ExecuteReader();
+                comboBoxPhase.Items.Insert(0, string.Empty);
                 while (sqlReader5.Read())
                 {
                     comboBoxPhase.Items.Add(sqlReader5[0].ToString());
                 }
-                comboBoxPhase.Items.Insert(0, string.Empty);
                 sqlReader5.Close();
+
                 SqlCommand sqlCmdview6 = new SqlCommand("Select * FROM v_column_date", sqlConn);
                 SqlDataReader sqlReader6 = sqlCmdview6.ExecuteReader();
+                comboBoxDate.Items.Insert(0, string.Empty);
                 while (sqlReader6.Read())
                 {
                     comboBoxDate.Items.Add(sqlReader6[0].ToString());
                 }
                 sqlReader6.Close();
+                SqlCommand sqlCmdview7 = new SqlCommand("Select tags FROM tbl_tags", sqlConn);
+                SqlDataReader sqlReader7 = sqlCmdview7.ExecuteReader();
+                comboBoxAllTag.Items.Insert(0, string.Empty);
+                while (sqlReader7.Read())
+                {
+                    comboBoxAllTag.Items.Add(sqlReader7[0].ToString());
+                }
+                sqlReader7.Close();
+                SqlCommand sqlCmdview8 = new SqlCommand("Select tags FROM v_OtherTags", sqlConn);
+                SqlDataReader sqlReader8 = sqlCmdview8.ExecuteReader();
+                comboBoxCustomTag.Items.Insert(0, string.Empty);
+                while (sqlReader8.Read())
+                {
+                    comboBoxCustomTag.Items.Add(sqlReader8[0].ToString());
+                }
+                sqlReader8.Close();
 
+                comboBoxCategory.SelectedIndex = comboBoxDate.SelectedIndex = comboBoxSector.SelectedIndex = comboBoxSubSector.SelectedIndex = comboBoxState.SelectedIndex = 0;
+
+                
             }
             catch (Exception ex1)
             {
@@ -105,10 +144,6 @@ namespace GDC_database_app
             }       
         }
 
-        private void refreshcom()
-        {
-            textBoxComp.Text = _LongQuery;
-        }
 
         private void showReturnedRows(int num)
         {
@@ -396,15 +431,15 @@ namespace GDC_database_app
 
         private void btnDateSearch_Click(object sender, EventArgs e)
         {
+            if (textBoxStart.TextLength > 6 & textBoxEnd.TextLength > 6) {
+                if(comboBoxDate.SelectedIndex > 0) { 
             try { 
                 DateTime dateTimeStart = Convert.ToDateTime(textBoxStart.Text);
                 DateTime dateTimeEnd = Convert.ToDateTime(textBoxEnd.Text);
                 if (dateTimeStart < dateTimeEnd)
                 {
-                    //MessageBox.Show("Debug: Start < End");
                     try { 
                         DateStoredDsqlProc(dateTimeStart, dateTimeEnd);
-                        //DateStoredProc(dateTimeStart, dateTimeEnd)
                         }
                     catch(Exception ex2)
                     {
@@ -420,6 +455,17 @@ namespace GDC_database_app
                 {
                 MessageBox.Show("Error has occurred: " + ex1.ToString());
                 }          
+               }
+                else
+                {
+                    MessageBox.Show("Date type not entered");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Start or end date is not entered");
+            }
+
         }
    
         private void btnJobnoSearch_Click(object sender, EventArgs e)
@@ -431,20 +477,20 @@ namespace GDC_database_app
         {
             try
             {
-                if(comboBoxCategory.SelectedItem != null && comboBoxState.SelectedItem != null)
+                if(comboBoxCategory.SelectedItem.ToString() != "" & comboBoxState.SelectedItem.ToString() != "")
                 {
                     //MessageBox.Show("1" + comboBoxCategory.SelectedItem.ToString() + comboBoxState.SelectedItem.ToString() );
                     StateCategoryStoredProc();
                 }
                 else { 
-                if(comboBoxCategory.SelectedItem != null)
+                if(comboBoxCategory.SelectedItem.ToString() != "")
                 {
                         //MessageBox.Show("2" + comboBoxCategory.SelectedItem.ToString());
                         CategoryStoredProc();
                 }
                     else
                     {
-                        if(comboBoxState.SelectedItem != null)
+                        if(comboBoxState.SelectedItem.ToString() != "")
                         {
                             //MessageBox.Show("3" + comboBoxState.SelectedItem.ToString());
                             StateStoredProc();
@@ -479,27 +525,30 @@ namespace GDC_database_app
 
         private void btnComSearch_Click(object sender, EventArgs e)
         {
-            SqlCommand ComsqlCmd = new SqlCommand(_LongQuery,sqlConn);
+
+            SqlCommand ComsqlCmd = new SqlCommand(textBoxComp.Text,sqlConn);
             activateGridview(ComsqlCmd);
+
+
         }
 
         private void btnSectorSearch_Click(object sender, EventArgs e)
         {
             try
             {
-                if (comboBoxSector.SelectedItem != null && comboBoxSubSector.SelectedItem != null)
+                if (comboBoxSector.SelectedItem.ToString() != "" && comboBoxSubSector.SelectedItem.ToString() != "")
                 {
                     MarketSubsectorStoredProc();
                 }
                 else
                 {
-                    if (comboBoxSector.SelectedItem != null)
+                    if (comboBoxSector.SelectedItem.ToString() != "")
                     {
                         MarketSectorStoredProc();
                     }
                     else
                     {
-                        if (comboBoxSubSector.SelectedItem != null)
+                        if (comboBoxSubSector.SelectedItem.ToString() != "")
                         {
                             SubSectorStoredProc();
                         }
@@ -566,132 +615,248 @@ namespace GDC_database_app
             }
         }
 
+        private void statushandler(int chose)
+        {
+            int address1 = 5;
+            string sqlsend = "";
+            
+
+            if (chose == 1)
+            {
+                sqlsend = sqlsend + "Category_Category = '" + comboBoxCategory.SelectedItem.ToString() + "'";
+                compoundstringhandler(sqlsend,address1);
+            }
+            if (chose == 2)
+            {
+                sqlsend = sqlsend + "State_State = '" + comboBoxState.SelectedItem.ToString() + "'";
+                compoundstringhandler(sqlsend,address1);
+            }
+            if (chose == 3)
+            {
+                sqlsend = sqlsend + "Category_Category = '" + comboBoxCategory.SelectedItem.ToString() + "' AND State_State = '" + comboBoxState.SelectedItem.ToString() + "'";
+                compoundstringhandler(sqlsend,address1);
+            }
+
+           
+        }
+
         private void btnStatusAdd_Click(object sender, EventArgs e)
         {
-            int address1 = 2;
-            if (_Countarray[address1] < 1)
+            if (comboBoxCategory.SelectedIndex != 0 && comboBoxState.SelectedIndex != 0)
             {
-                if (textBoxStart.Text != null && textBoxEnd.Text != null && comboBoxDate.SelectedItem != null)
-                {
-
-                }
-                else
-                {
-                    //if(tex)
-                }
+                statushandler(3);
             }
             else
             {
-                btnDateAdd.Text = "Clear";
-                _Countarray[address1] += 1;
-                refreshcom();
+                if (comboBoxState.SelectedIndex != 0)
+                {
+                    statushandler(2);
+                }
+                else
+                {
+                    if (comboBoxCategory.SelectedIndex != 0)
+                    {
+                        statushandler(1);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Date entry fields are empty");
+                    }
+                }
             }
-            if (_Countarray[address1] > 1)
-            {
-                _Countarray[address1] = 0;
-                btnDateAdd.Text = "Add";
-                textBoxStart.Clear();
-                refreshcom();
-            }
+
         }
+
+        
         private void btnDateAdd_Click(object sender, EventArgs e)
         {
-            int address1 = 0;
-            if (_Countarray[address1] < 1)
+            string sqlsend = "";
+            int address1 = 1;
+            try { 
+            if (textBoxStart.TextLength > 6 & textBoxEnd.TextLength > 6)
+                
             {
-                if (textBoxStart.Text != null && textBoxEnd.Text != null && comboBoxDate.SelectedItem != null)
-                {
-                    if (_countCom > 0)
-                    {
-                        _LongQuery = _LongQuery + "AND";
-                    }
-                    _LongQuery = _LongQuery + comboBoxDate.SelectedItem.ToString() + " BETWEEN '" + textBoxStart.Text + "' AND '" + textBoxEnd.Text + "'";
-                    MessageBox.Show(_LongQuery);
-                    _Countarray[address1] += 1;
-                    refreshcom();
-                    _countCom += 1;
+                if(comboBoxDate.SelectedIndex != 0 & comboBoxDate.Text != null) 
+                { 
+                    sqlsend = comboBoxDate.SelectedItem.ToString() + " BETWEEN '" + textBoxStart.Text + "' AND '" + textBoxEnd.Text + "'";
+                    compoundstringhandler(sqlsend,address1);
                 }
+                else
+                {
+                    MessageBox.Show("Date type is not selected");
+                }
+
+            }
                 else
                 {
                     MessageBox.Show("Date entry fields are empty");
-                }
-            }
-            else
+                } 
+            } catch(Exception ex1) { MessageBox.Show("Debug: " + ex1.ToString()); }
+            
+            
+        }
+
+        private void sectorhandler(int chose)
+        {
+            int address1 = 3;
+            string sqlsend = "";
+
+            if (chose == 1)
             {
-                btnDateAdd.Text = "Clear";
-                _Countarray[address1] += 1;
-                refreshcom();
+                sqlsend = sqlsend + "Job_Market_Sector_1 = '" + comboBoxSector.SelectedItem.ToString() + "'";
+                compoundstringhandler(sqlsend,address1);
             }
-            if (_Countarray[address1] > 1)
+            if(chose == 2)
             {
-                _Countarray[address1] = 0;
-                btnDateAdd.Text = "Add";
-                textBoxStart.Clear();
-                refreshcom();
+                sqlsend = sqlsend + "Job_Sub_Market_Sector = '" + comboBoxSubSector.SelectedItem.ToString() + "'";
+                compoundstringhandler(sqlsend,address1);
             }
+            if(chose == 3)
+            {
+                sqlsend = sqlsend + "Job_Market_Sector_1 = '" + comboBoxSector.SelectedItem.ToString() + "' AND Job_Sub_Market_Sector = '" + comboBoxSubSector.SelectedItem.ToString() + "'";
+                compoundstringhandler(sqlsend,address1);
+            }
+        }
+
+        private void taghandler(int chose)
+        {
+            try { 
+            string sqlsend = "Select * From tbl_job j, tbl_job_tags jt, tbl_tags t " +
+                             "WHERE jt.uuid = t.uuid AND j.Job_Job_No = jt.job_job_no AND ";
+
+
+            if (chose == 1)
+            {
+                sqlsend = sqlsend + "tags = '" + comboBoxSector.SelectedItem.ToString() + "'";
+                
+            }
+            if (chose == 2)
+            {
+                sqlsend = sqlsend + "tags = '" + comboBoxAllTag.SelectedItem.ToString() + "'";
+                
+            }
+
+                SqlCommand cmd1 = new SqlCommand(sqlsend, sqlConn);
+                activateGridview(cmd1);
+            }
+            catch(Exception ex1)
+            {
+                MessageBox.Show(ex1.ToString());
+            }
+
         }
 
         private void btnSectorAdd_Click(object sender, EventArgs e)
         {
-            int address1 = 1;
-            if (_Countarray[address1] < 1)
-            {
-                if (comboBoxSector.SelectedItem != null && comboBoxSubSector.SelectedItem != null)
+           
+                if (comboBoxSector.SelectedIndex > 0 && comboBoxSubSector.SelectedIndex > 0)
                 {
-                    if (_countCom > 0)
-                    {
-                        _LongQuery = _LongQuery + "AND";
-                    
-                    
-                    }
-                   
-                    _Countarray[address1] += 1;
-                    refreshcom();
-                    _countCom += 1;//compound count layer
+                    sectorhandler(3);
                 }
                 else
                 {
-                   if(comboBoxSubSector.SelectedItem != null)
+                   if(comboBoxSubSector.SelectedIndex > 0)
                     {
-                        if (_countCom > 0)
-                        {
-                            _LongQuery = _LongQuery + "AND";
-
-
-                        }
+                        sectorhandler(2);   
                     }
                    else
                     {
-                        if(comboBoxSector.SelectedItem != null)
+                        if(comboBoxSector.SelectedIndex > 0)
                         {
-                            if (_countCom > 0)
-                            {
-                                _LongQuery = _LongQuery + "AND";
-
-
-                            }
+                           sectorhandler(1);
                         }
                         else
                         {
-
+                        MessageBox.Show("Date entry fields are empty");
                         }
                     }
                 }
+         
+            
+        }
+
+
+        private void compoundstringhandler(string input,int address)
+        {
+            string read = "";
+            bool numfront = false;
+            int x = _Countarray.Length;
+            for(int i = 1; x > i; i++)
+            {
+                if(_Countarray[i] != "")
+                {
+                    numfront = true;
+                }
             }
-            //btn press count layer
+            if(numfront == false ) 
+            { 
+                _Countarray[address] = input;
+            }
             else
             {
-                btnDateAdd.Text = "Clear";
-                _Countarray[address1] += 1;
-                refreshcom();
+                _Countarray[address] = input;
+                _Countarray[address - 1] = " AND ";
+                _Countarray[0] = "SELECT * FROM tbl_job WHERE ";
             }
-            if (_Countarray[address1] > 1)
+            
+
+            for (int i = 0; x > i; i++)
             {
-                _Countarray[address1] = 0;
-                btnDateAdd.Text = "Add";
-                textBoxStart.Clear();
-                refreshcom();
+                 read = read + _Countarray[i];
             }
+
+            textBoxComp.Text = read;
+
+        }
+
+        
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+
+        }
+
+
+        private void btnTagSearch_Click(object sender, EventArgs e)
+        {
+            if (comboBoxAllTag.SelectedIndex != 0 & comboBoxCustomTag.SelectedIndex != 0)
+            {
+                taghandler(2);
+            }
+            else
+            {
+                if (comboBoxAllTag.SelectedIndex != 0)
+                {
+                    taghandler(2);
+                }
+                else
+                {
+                    if (comboBoxCustomTag.SelectedIndex != 0)
+                    {
+                        taghandler(1);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Date entry fields are empty");
+                    }
+                }
+            }
+        }
+
+        private void QuickSearch_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            clearall();
+        }
+
+        private void btnHowuse_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

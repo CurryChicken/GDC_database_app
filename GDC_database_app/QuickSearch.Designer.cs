@@ -61,8 +61,6 @@
             this.btnJobnoSearch = new System.Windows.Forms.Button();
             this.textBoxJobno = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnDescription = new System.Windows.Forms.Button();
-            this.btnClear = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.btnExport = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
@@ -93,6 +91,16 @@
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.btnPhaseSearch = new System.Windows.Forms.Button();
             this.comboBoxPhase = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.groupBox10 = new System.Windows.Forms.GroupBox();
+            this.btnTagSearch = new System.Windows.Forms.Button();
+            this.tabControl4 = new System.Windows.Forms.TabControl();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
+            this.comboBoxAllTag = new System.Windows.Forms.ComboBox();
+            this.tabPage10 = new System.Windows.Forms.TabPage();
+            this.comboBoxCustomTag = new System.Windows.Forms.ComboBox();
+            this.btnClear = new System.Windows.Forms.Button();
+            this.btnHowuse = new System.Windows.Forms.Button();
             this.GroupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -115,6 +123,11 @@
             this.groupBox8.SuspendLayout();
             this.tabPage9.SuspendLayout();
             this.groupBox9.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.groupBox10.SuspendLayout();
+            this.tabControl4.SuspendLayout();
+            this.tabPage7.SuspendLayout();
+            this.tabPage10.SuspendLayout();
             this.SuspendLayout();
             // 
             // GroupBox1
@@ -132,7 +145,7 @@
             this.GroupBox1.Controls.Add(this.btnMonth);
             this.GroupBox1.Controls.Add(this.btnWeek);
             this.GroupBox1.Controls.Add(this.lblCurrent);
-            this.GroupBox1.Location = new System.Drawing.Point(11, 12);
+            this.GroupBox1.Location = new System.Drawing.Point(4, 6);
             this.GroupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.GroupBox1.Name = "GroupBox1";
             this.GroupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -279,7 +292,7 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.comboBoxSubSector);
             this.groupBox2.Controls.Add(this.comboBoxSector);
-            this.groupBox2.Location = new System.Drawing.Point(619, 12);
+            this.groupBox2.Location = new System.Drawing.Point(612, 6);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -351,11 +364,11 @@
             this.groupBox3.Controls.Add(this.tabControl2);
             this.groupBox3.Controls.Add(this.btnStatusAdd);
             this.groupBox3.Controls.Add(this.btnStatusSearch);
-            this.groupBox3.Location = new System.Drawing.Point(911, 12);
+            this.groupBox3.Location = new System.Drawing.Point(904, 6);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(270, 196);
+            this.groupBox3.Size = new System.Drawing.Size(270, 189);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Status";
@@ -411,7 +424,7 @@
             // 
             // btnStatusAdd
             // 
-            this.btnStatusAdd.Location = new System.Drawing.Point(20, 123);
+            this.btnStatusAdd.Location = new System.Drawing.Point(20, 125);
             this.btnStatusAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnStatusAdd.Name = "btnStatusAdd";
             this.btnStatusAdd.Size = new System.Drawing.Size(101, 47);
@@ -465,51 +478,33 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.btnDescription);
             this.groupBox5.Controls.Add(this.btnClear);
             this.groupBox5.Controls.Add(this.btnClose);
             this.groupBox5.Controls.Add(this.btnExport);
-            this.groupBox5.Location = new System.Drawing.Point(1527, 10);
+            this.groupBox5.Location = new System.Drawing.Point(1523, 129);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox5.Size = new System.Drawing.Size(315, 125);
+            this.groupBox5.Size = new System.Drawing.Size(475, 62);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Controls";
             // 
-            // btnDescription
-            // 
-            this.btnDescription.Location = new System.Drawing.Point(168, 71);
-            this.btnDescription.Name = "btnDescription";
-            this.btnDescription.Size = new System.Drawing.Size(141, 49);
-            this.btnDescription.TabIndex = 3;
-            this.btnDescription.Text = "How to use";
-            this.btnDescription.UseVisualStyleBackColor = true;
-            // 
-            // btnClear
-            // 
-            this.btnClear.Location = new System.Drawing.Point(16, 71);
-            this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(141, 49);
-            this.btnClear.TabIndex = 2;
-            this.btnClear.Text = "Clear Selection";
-            this.btnClear.UseVisualStyleBackColor = true;
-            // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(168, 24);
+            this.btnClose.Location = new System.Drawing.Point(295, 24);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(141, 43);
+            this.btnClose.Size = new System.Drawing.Size(137, 33);
             this.btnClose.TabIndex = 1;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnExport
             // 
-            this.btnExport.Location = new System.Drawing.Point(16, 24);
+            this.btnExport.Location = new System.Drawing.Point(152, 23);
             this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(141, 43);
+            this.btnExport.Size = new System.Drawing.Size(137, 33);
             this.btnExport.TabIndex = 0;
             this.btnExport.Text = "Export";
             this.btnExport.UseVisualStyleBackColor = true;
@@ -517,17 +512,17 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(11, 270);
+            this.dataGridView1.Location = new System.Drawing.Point(14, 263);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1831, 798);
+            this.dataGridView1.Size = new System.Drawing.Size(1984, 798);
             this.dataGridView1.TabIndex = 5;
             // 
             // lblReturnStatus
             // 
             this.lblReturnStatus.AutoSize = true;
-            this.lblReturnStatus.Location = new System.Drawing.Point(1536, 159);
+            this.lblReturnStatus.Location = new System.Drawing.Point(1532, 192);
             this.lblReturnStatus.Name = "lblReturnStatus";
             this.lblReturnStatus.Size = new System.Drawing.Size(120, 20);
             this.lblReturnStatus.TabIndex = 6;
@@ -535,15 +530,15 @@
             // 
             // textBoxComp
             // 
-            this.textBoxComp.Location = new System.Drawing.Point(159, 225);
+            this.textBoxComp.Location = new System.Drawing.Point(17, 220);
             this.textBoxComp.Name = "textBoxComp";
-            this.textBoxComp.Size = new System.Drawing.Size(1549, 26);
+            this.textBoxComp.Size = new System.Drawing.Size(1839, 26);
             this.textBoxComp.TabIndex = 7;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(10, 227);
+            this.label8.Location = new System.Drawing.Point(10, 197);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(146, 20);
             this.label8.TabIndex = 8;
@@ -551,7 +546,7 @@
             // 
             // btnComSearch
             // 
-            this.btnComSearch.Location = new System.Drawing.Point(1714, 221);
+            this.btnComSearch.Location = new System.Drawing.Point(1861, 216);
             this.btnComSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnComSearch.Name = "btnComSearch";
             this.btnComSearch.Size = new System.Drawing.Size(121, 33);
@@ -652,10 +647,10 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(1190, 4);
+            this.tabControl1.Location = new System.Drawing.Point(1183, 6);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(332, 102);
+            this.tabControl1.Size = new System.Drawing.Size(332, 94);
             this.tabControl1.TabIndex = 12;
             // 
             // tabPage1
@@ -664,7 +659,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(324, 69);
+            this.tabPage1.Size = new System.Drawing.Size(324, 61);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Job Address";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -675,7 +670,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(324, 69);
+            this.tabPage2.Size = new System.Drawing.Size(324, 61);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Staff";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -686,7 +681,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(324, 69);
+            this.tabPage3.Size = new System.Drawing.Size(324, 61);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Client";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -697,7 +692,7 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 29);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(324, 69);
+            this.tabPage4.Size = new System.Drawing.Size(324, 61);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Job Number";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -706,10 +701,10 @@
             // 
             this.tabControl3.Controls.Add(this.tabPage8);
             this.tabControl3.Controls.Add(this.tabPage9);
-            this.tabControl3.Location = new System.Drawing.Point(1194, 105);
+            this.tabControl3.Location = new System.Drawing.Point(1187, 100);
             this.tabControl3.Name = "tabControl3";
             this.tabControl3.SelectedIndex = 0;
-            this.tabControl3.Size = new System.Drawing.Size(328, 103);
+            this.tabControl3.Size = new System.Drawing.Size(328, 99);
             this.tabControl3.TabIndex = 13;
             // 
             // tabPage8
@@ -718,7 +713,7 @@
             this.tabPage8.Location = new System.Drawing.Point(4, 29);
             this.tabPage8.Name = "tabPage8";
             this.tabPage8.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage8.Size = new System.Drawing.Size(320, 70);
+            this.tabPage8.Size = new System.Drawing.Size(320, 66);
             this.tabPage8.TabIndex = 0;
             this.tabPage8.Text = "Job Description";
             this.tabPage8.UseVisualStyleBackColor = true;
@@ -758,7 +753,7 @@
             this.tabPage9.Location = new System.Drawing.Point(4, 29);
             this.tabPage9.Name = "tabPage9";
             this.tabPage9.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage9.Size = new System.Drawing.Size(320, 70);
+            this.tabPage9.Size = new System.Drawing.Size(320, 66);
             this.tabPage9.TabIndex = 1;
             this.tabPage9.Text = "Phase";
             this.tabPage9.UseVisualStyleBackColor = true;
@@ -794,25 +789,133 @@
             this.comboBoxPhase.Size = new System.Drawing.Size(201, 28);
             this.comboBoxPhase.TabIndex = 4;
             // 
+            // panel1
+            // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.AutoSize = true;
+            this.panel1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.panel1.Controls.Add(this.btnHowuse);
+            this.panel1.Controls.Add(this.groupBox10);
+            this.panel1.Controls.Add(this.tabControl3);
+            this.panel1.Controls.Add(this.tabControl1);
+            this.panel1.Controls.Add(this.btnComSearch);
+            this.panel1.Controls.Add(this.lblReturnStatus);
+            this.panel1.Controls.Add(this.textBoxComp);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Controls.Add(this.groupBox5);
+            this.panel1.Controls.Add(this.groupBox3);
+            this.panel1.Controls.Add(this.groupBox2);
+            this.panel1.Controls.Add(this.GroupBox1);
+            this.panel1.Location = new System.Drawing.Point(9, 2);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(2001, 1064);
+            this.panel1.TabIndex = 14;
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.btnTagSearch);
+            this.groupBox10.Controls.Add(this.tabControl4);
+            this.groupBox10.Location = new System.Drawing.Point(1523, 2);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(361, 127);
+            this.groupBox10.TabIndex = 14;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Tags";
+            // 
+            // btnTagSearch
+            // 
+            this.btnTagSearch.Location = new System.Drawing.Point(273, 56);
+            this.btnTagSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTagSearch.Name = "btnTagSearch";
+            this.btnTagSearch.Size = new System.Drawing.Size(79, 46);
+            this.btnTagSearch.TabIndex = 4;
+            this.btnTagSearch.Text = "Search";
+            this.btnTagSearch.UseVisualStyleBackColor = true;
+            this.btnTagSearch.Click += new System.EventHandler(this.btnTagSearch_Click);
+            // 
+            // tabControl4
+            // 
+            this.tabControl4.Controls.Add(this.tabPage7);
+            this.tabControl4.Controls.Add(this.tabPage10);
+            this.tabControl4.Location = new System.Drawing.Point(13, 25);
+            this.tabControl4.Name = "tabControl4";
+            this.tabControl4.SelectedIndex = 0;
+            this.tabControl4.Size = new System.Drawing.Size(261, 83);
+            this.tabControl4.TabIndex = 0;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.comboBoxAllTag);
+            this.tabPage7.Location = new System.Drawing.Point(4, 29);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(253, 50);
+            this.tabPage7.TabIndex = 0;
+            this.tabPage7.Text = "All";
+            this.tabPage7.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxAllTag
+            // 
+            this.comboBoxAllTag.FormattingEnabled = true;
+            this.comboBoxAllTag.Location = new System.Drawing.Point(5, 12);
+            this.comboBoxAllTag.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBoxAllTag.Name = "comboBoxAllTag";
+            this.comboBoxAllTag.Size = new System.Drawing.Size(245, 28);
+            this.comboBoxAllTag.TabIndex = 2;
+            // 
+            // tabPage10
+            // 
+            this.tabPage10.Controls.Add(this.comboBoxCustomTag);
+            this.tabPage10.Location = new System.Drawing.Point(4, 29);
+            this.tabPage10.Name = "tabPage10";
+            this.tabPage10.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage10.Size = new System.Drawing.Size(185, 63);
+            this.tabPage10.TabIndex = 1;
+            this.tabPage10.Text = "Custom";
+            this.tabPage10.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxCustomTag
+            // 
+            this.comboBoxCustomTag.FormattingEnabled = true;
+            this.comboBoxCustomTag.Location = new System.Drawing.Point(4, 17);
+            this.comboBoxCustomTag.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.comboBoxCustomTag.Name = "comboBoxCustomTag";
+            this.comboBoxCustomTag.Size = new System.Drawing.Size(175, 28);
+            this.comboBoxCustomTag.TabIndex = 1;
+            // 
+            // btnClear
+            // 
+            this.btnClear.Location = new System.Drawing.Point(10, 23);
+            this.btnClear.Name = "btnClear";
+            this.btnClear.Size = new System.Drawing.Size(137, 33);
+            this.btnClear.TabIndex = 2;
+            this.btnClear.Text = "Clear";
+            this.btnClear.UseVisualStyleBackColor = true;
+            this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+            // 
+            // btnHowuse
+            // 
+            this.btnHowuse.Location = new System.Drawing.Point(1890, 10);
+            this.btnHowuse.Name = "btnHowuse";
+            this.btnHowuse.Size = new System.Drawing.Size(102, 119);
+            this.btnHowuse.TabIndex = 15;
+            this.btnHowuse.Text = "How to use?";
+            this.btnHowuse.UseVisualStyleBackColor = true;
+            this.btnHowuse.Click += new System.EventHandler(this.btnHowuse_Click);
+            // 
             // QuickSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1846, 1083);
-            this.Controls.Add(this.tabControl3);
-            this.Controls.Add(this.tabControl1);
-            this.Controls.Add(this.btnComSearch);
-            this.Controls.Add(this.textBoxComp);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.lblReturnStatus);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.GroupBox1);
+            this.ClientSize = new System.Drawing.Size(2019, 1083);
+            this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "QuickSearch";
             this.Text = "QuickSearch";
+            this.Load += new System.EventHandler(this.QuickSearch_Load);
             this.GroupBox1.ResumeLayout(false);
             this.GroupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -842,6 +945,12 @@
             this.groupBox8.PerformLayout();
             this.tabPage9.ResumeLayout(false);
             this.groupBox9.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.groupBox10.ResumeLayout(false);
+            this.tabControl4.ResumeLayout(false);
+            this.tabPage7.ResumeLayout(false);
+            this.tabPage10.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -879,8 +988,6 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label lblReturnStatus;
-        private System.Windows.Forms.Button btnDescription;
-        private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.TextBox textBoxComp;
@@ -914,5 +1021,15 @@
         private System.Windows.Forms.Button btnPhaseSearch;
         private System.Windows.Forms.ComboBox comboBoxPhase;
         private System.Windows.Forms.Button btnAddressSearch;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.GroupBox groupBox10;
+        private System.Windows.Forms.Button btnTagSearch;
+        private System.Windows.Forms.TabControl tabControl4;
+        private System.Windows.Forms.TabPage tabPage7;
+        private System.Windows.Forms.ComboBox comboBoxAllTag;
+        private System.Windows.Forms.TabPage tabPage10;
+        private System.Windows.Forms.ComboBox comboBoxCustomTag;
+        private System.Windows.Forms.Button btnClear;
+        private System.Windows.Forms.Button btnHowuse;
     }
 }

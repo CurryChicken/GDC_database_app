@@ -38,6 +38,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnQuickSearch = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnTagging = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.btnAdnMenu = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -152,42 +153,55 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnTagging);
             this.groupBox2.Controls.Add(this.btnLogin);
             this.groupBox2.Controls.Add(this.btnAdnMenu);
             this.groupBox2.Location = new System.Drawing.Point(11, 277);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(649, 138);
+            this.groupBox2.Size = new System.Drawing.Size(649, 184);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Database Adminstration";
             // 
+            // btnTagging
+            // 
+            this.btnTagging.Location = new System.Drawing.Point(17, 124);
+            this.btnTagging.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTagging.Name = "btnTagging";
+            this.btnTagging.Size = new System.Drawing.Size(611, 34);
+            this.btnTagging.TabIndex = 2;
+            this.btnTagging.Text = "Tagging";
+            this.btnTagging.UseVisualStyleBackColor = true;
+            this.btnTagging.Click += new System.EventHandler(this.btnTagging_Click);
+            // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(16, 83);
+            this.btnLogin.Location = new System.Drawing.Point(16, 78);
             this.btnLogin.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(611, 34);
             this.btnLogin.TabIndex = 1;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = true;
+            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // btnAdnMenu
             // 
-            this.btnAdnMenu.Enabled = false;
-            this.btnAdnMenu.Location = new System.Drawing.Point(17, 39);
+            this.btnAdnMenu.Location = new System.Drawing.Point(17, 34);
             this.btnAdnMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdnMenu.Name = "btnAdnMenu";
             this.btnAdnMenu.Size = new System.Drawing.Size(610, 34);
             this.btnAdnMenu.TabIndex = 0;
             this.btnAdnMenu.Text = "Manage";
             this.btnAdnMenu.UseVisualStyleBackColor = true;
+            this.btnAdnMenu.Click += new System.EventHandler(this.btnAdnMenu_Click);
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btnManCon);
-            this.groupBox3.Location = new System.Drawing.Point(11, 420);
+            this.groupBox3.Location = new System.Drawing.Point(11, 469);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -209,17 +223,18 @@
             // 
             // btnContact
             // 
-            this.btnContact.Location = new System.Drawing.Point(25, 528);
+            this.btnContact.Location = new System.Drawing.Point(27, 598);
             this.btnContact.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnContact.Name = "btnContact";
             this.btnContact.Size = new System.Drawing.Size(159, 35);
             this.btnContact.TabIndex = 5;
             this.btnContact.Text = "Contact Me";
             this.btnContact.UseVisualStyleBackColor = true;
+            this.btnContact.Click += new System.EventHandler(this.btnContact_Click);
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(259, 527);
+            this.button3.Location = new System.Drawing.Point(260, 597);
             this.button3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(149, 35);
@@ -229,7 +244,7 @@
             // 
             // btnMainExit
             // 
-            this.btnMainExit.Location = new System.Drawing.Point(484, 526);
+            this.btnMainExit.Location = new System.Drawing.Point(483, 596);
             this.btnMainExit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMainExit.Name = "btnMainExit";
             this.btnMainExit.Size = new System.Drawing.Size(154, 35);
@@ -242,7 +257,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(662, 611);
+            this.ClientSize = new System.Drawing.Size(662, 656);
             this.Controls.Add(this.btnMainExit);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.btnContact);
@@ -281,6 +296,7 @@
         private System.Windows.Forms.Button btnContact;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button btnMainExit;
+        private System.Windows.Forms.Button btnTagging;
     }
 }
 
