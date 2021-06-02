@@ -165,6 +165,14 @@ namespace GDC_database_app
                 FormLogin.Show();
             }
         }
+
+
+        private void btnAdvanceSearch_Click(object sender, EventArgs e)
+        {
+            Form FormAS = new AdvanceSearch();
+            FormAS.Show();
+
+        }
     }
 
 
