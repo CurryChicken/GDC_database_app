@@ -65,7 +65,7 @@ namespace GDC_database_app
             using (SqlBulkCopy bulkCopy = new SqlBulkCopy(sqlConn))
             {
                     truncate_table();
-                    bulkCopy.DestinationTableName = selectedtable;
+                    bulkCopy.DestinationTableName = comboBoxTable.Text;
                     collist = new List<string>();
                     SqlCommand colcmd = new SqlCommand("select COLUMN_NAME from information_schema.columns where table_name = '" + comboBoxTable.Text + "'",sqlConn);
                     SqlDataReader sqlreader = colcmd.ExecuteReader();
@@ -92,6 +92,11 @@ namespace GDC_database_app
                                         }
                            }       
                     }
+
+                    
+
+
+
                     //  MessageBox.Show("Debug: Column matching started");
                     //foreach (DataColumn c in OneData.Columns)
                     //{
@@ -110,17 +115,41 @@ namespace GDC_database_app
                             bulkCopy.WriteToServer(OneData);
                             textBox1.Text += "Copying to the database completed ..." + Environment.NewLine;
                             groupBox4.Enabled = true;
+                            if (selectedtable == "tbl_job")
+                            {
+                                try
+                                {
+                                    textBox1.Text += "Recreating table constraints ..." + Environment.NewLine;
+                                    SqlCommand sqlcondrop = new SqlCommand("[dbo].[sp_create_constraints]", sqlConn);
+                                    sqlcondrop.ExecuteNonQuery();
+                                    textBox1.Text += "Recreating table constraints Successful" + Environment.NewLine;
+                                }
+                                catch (Exception ex1)
+                                {
+                                    MessageBox.Show(ex1.ToString());
+                                }
+
+                            }
                         }
                         else
                         {
                             MessageBox.Show("Datatables are empty");
                         }
 
+
+
                     }
                     catch (Exception ex1)
                     {
                         MessageBox.Show(ex1.ToString());
                     }
+
+
+
+
+
+
+
 
                 }
 
@@ -133,11 +162,34 @@ namespace GDC_database_app
 
         private void truncate_table()
         {
+            if (comboBoxTable.Text == "tbl_job")
+            {
+                try
+                {
+                    textBox1.Text += "Dropping table constraints ..." + Environment.NewLine;
+                    SqlCommand sqlcondrop = new SqlCommand("[dbo].[sp_drop_constraints]", sqlConn);
+                    sqlcondrop.ExecuteNonQuery();
+                    textBox1.Text += "Dropped table constraints Successful" + Environment.NewLine;
+                }
+                catch (Exception ex1)
+                {
+                    MessageBox.Show(ex1.ToString());
+                }
+
+            }
+
             SqlCommand sqlcmd = new SqlCommand("[dbo].[sp_truncate_table]",sqlConn);
-            sqlcmd.Parameters.AddWithValue("@table_name", SqlDbType.VarChar).Value = comboBoxTable.Text;
             sqlcmd.CommandType = CommandType.StoredProcedure;
-            sqlcmd.BeginExecuteNonQuery();
-            textBox1.Text += "Truncating table = " + comboBoxTable.Text + " ... " + Environment.NewLine;
+            sqlcmd.Parameters.AddWithValue("@table_name", SqlDbType.VarChar).Value = comboBoxTable.Text;   
+            //var exce = 
+                sqlcmd.ExecuteNonQuery();
+                textBox1.Text += "Truncating table = " + comboBoxTable.Text + " successful " + Environment.NewLine;
+            
+               // textBox1.Text += "Truncating table = " + comboBoxTable.Text + " failed " + Environment.NewLine;
+            
+       
+            
+            
 
         }
 
@@ -240,7 +292,7 @@ namespace GDC_database_app
 
         private void comboBoxTable_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxTable.SelectedIndex > 0)
+            if (comboBoxTable.SelectedIndex >= 0)
             {
                 selectedtable = comboBoxTable.Text;
             }
@@ -256,6 +308,66 @@ namespace GDC_database_app
         {
             this.Close();
         }
+        
+        private void btnRollback_Click(object sender, EventArgs e)
+        {
+            var results = MessageBox.Show("Rolling back previous changes, Are you sure?", "Confirm changes roll back", MessageBoxButtons.YesNo);
 
+
+            if(results == DialogResult.Yes) 
+            {
+                try
+                {
+                    if (selectedtable == "tbl_job")
+                    {
+                        try
+                        {
+                            textBox1.Text += "Dropping table constraints ..." + Environment.NewLine;
+                            SqlCommand sqlcondrop = new SqlCommand("[dbo].[sp_drop_constraints]", sqlConn);
+                            sqlcondrop.ExecuteNonQuery();
+                            textBox1.Text += "Dropped table constraints Successful" + Environment.NewLine;
+                        }
+                        catch (Exception ex1)
+                        {
+                            MessageBox.Show(ex1.ToString());
+                        }
+
+                    }
+                    SqlCommand sqlCmd = new SqlCommand("Rollback", sqlConn);
+                    sqlCmd.ExecuteNonQuery();
+                    MessageBox.Show("Changes has been rolled back");
+                    SqlCommand sqlCmdtable = new SqlCommand("Select TOP 100 * from " + comboBoxTable.Text, sqlConn);
+                    DataSet data = new DataSet();
+                    SqlDataAdapter sqldap = new SqlDataAdapter(sqlCmd);
+                    sqldap.Fill(data);
+                    dataGridView1.DataSource = data.Tables[0];
+                    lblStatus1.Text = "Selected table returned";
+                    if (selectedtable == "tbl_job")
+                    {
+                        try
+                        {
+                            textBox1.Text += "Recreating table constraints ..." + Environment.NewLine;
+                            SqlCommand sqlcondrop = new SqlCommand("[dbo].[sp_create_constraints]", sqlConn);
+                            sqlcondrop.ExecuteNonQuery();
+                            textBox1.Text += "Recreating table constraints Successful" + Environment.NewLine;
+                        }
+                        catch (Exception ex1)
+                        {
+                            MessageBox.Show(ex1.ToString());
+                        }
+                    }
+                }
+
+                catch(Exception ex1)
+                {
+                    MessageBox.Show("debug: " + ex1.ToString());
+                }
+            }
+
+            if(results == DialogResult.No)
+            {
+                MessageBox.Show("Changes are not rollback");
+            }
+        }
     }
 }

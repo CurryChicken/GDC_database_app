@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace GDC_database_app
 {
-    public static class ExcelPackageExtension
+    public static class ExcelPackageExtension ///requires software licences to activiate.
     {
         public static DataTable dataTable(this ExcelPackage package)
         {

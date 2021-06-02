@@ -195,6 +195,7 @@
             this.btnRollback.TabIndex = 0;
             this.btnRollback.Text = "Rollback";
             this.btnRollback.UseVisualStyleBackColor = true;
+            this.btnRollback.Click += new System.EventHandler(this.btnRollback_Click);
             // 
             // textBox1
             // 

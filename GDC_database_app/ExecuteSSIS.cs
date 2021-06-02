@@ -9,7 +9,7 @@ using Microsoft.SqlServer.Dts.Runtime;
 
 namespace GDC_database_app
 {
-    class ExecuteSSIS
+    class ExecuteSSIS // used to execute SSIS package if excel transfer tools are decrepted
     {
         public string message = "";
         public void execPackage(string pkgaddress, string scraddress)
